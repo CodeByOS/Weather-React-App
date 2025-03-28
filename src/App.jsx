@@ -2,7 +2,6 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
 import WeatherCard from "./components/WeatherCard";
-import video from "./video.mp4";
 
 function App() {
   // State variables to manage weather data, loading status, and error messages
@@ -45,7 +44,7 @@ function App() {
         loop
         muted
       >
-        <source src={video} type="video/mp4" />
+        <source src="/video.mp4" type="video/mp4" />
         Your browser does not support the video tag
       </video>
       {/* Dark overlay to improve readability */}
