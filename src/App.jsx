@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import axios from "axios";
 import WeatherCard from "./components/WeatherCard";
@@ -24,7 +24,7 @@ function App() {
       setWeather(res.data); // Update weather state with fetched data
     } catch (error) {
       // Handle errors based on response status
-      if (error.res && error.res.status === 404) {
+      if (error.response && error.response.status === 404) {
         setError("City not Found . Please try again.");
       } else {
         setError("An error occurred. Please try again later.");
@@ -34,6 +34,11 @@ function App() {
       setLoading(false); // Reset loading state after request completes
     }
   };
+
+  // Fetch Rabat's weather when the app loads
+  useEffect(() => {
+    fetchWeather("Rabat");
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-blue-100">
