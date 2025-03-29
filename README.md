@@ -10,7 +10,7 @@ You can try out the Weather App by visiting the live demo [here](https://weather
 
 Here is a screenshot of the Weather App:
 
-![Alt text](./weather-app.png)
+![Alt text](./public/weather-app.png)
 
 ## Features
 
