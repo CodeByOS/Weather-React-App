@@ -1,6 +1,11 @@
 import React from "react";
 
 const WeatherCard = ({ weather }) => {
+  // Convert sunrise and sunset timestamps to readable time
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  };
   return (
     <div className="mt-6">
       {/* Display city name and country */}
@@ -47,6 +52,42 @@ const WeatherCard = ({ weather }) => {
         <div className="text-center">
           <p className="text-gray-400">Feels like</p>
           <p className="font-bold">{Math.round(weather.main.feels_like)}°C</p>
+        </div>
+
+        {/* Min Temperature */}
+        <div className="text-center">
+          <p className="text-gray-400">Min Temp</p>
+          <p className="font-bold">{Math.round(weather.main.temp_min)}°C</p>
+        </div>
+
+        {/* Max Temperature */}
+        <div className="text-center">
+          <p className="text-gray-400">Max Temp</p>
+          <p className="font-bold">{Math.round(weather.main.temp_max)}°C</p>
+        </div>
+
+        {/* Visibility */}
+        <div className="text-center">
+          <p className="text-gray-400">Visibility</p>
+          <p className="font-bold">{weather.visibility / 1000} km</p>
+        </div>
+
+        {/* Cloud Coverage */}
+        <div className="text-center">
+          <p className="text-gray-400">Clouds</p>
+          <p className="font-bold">{weather.clouds.all}%</p>
+        </div>
+
+        {/* Sunrise Time */}
+        <div className="text-center">
+          <p className="text-gray-400">Sunrise</p>
+          <p className="font-bold">{formatTime(weather.sys.sunrise)}</p>
+        </div>
+
+        {/* Sunset Time */}
+        <div className="text-center">
+          <p className="text-gray-400">Sunset</p>
+          <p className="font-bold">{formatTime(weather.sys.sunset)}</p>
         </div>
       </div>
     </div>
